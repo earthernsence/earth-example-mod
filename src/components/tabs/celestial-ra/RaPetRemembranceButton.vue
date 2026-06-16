@@ -11,6 +11,7 @@ export default {
     return {
       isUnlocked: false,
       hasRemembrance: false,
+      hasAllRemembrance: false,
     };
   },
   computed: {
@@ -22,9 +23,9 @@ export default {
     },
     petStyle() {
       return {
-        backgroundColor: this.hasRemembrance ? this.pet.color : "#555",
-        "box-shadow": this.hasRemembrance ? "0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.7)" : "",
-        "border-color": this.hasRemembrance ? "black" : ""
+        backgroundColor: this.hasRemembrance || this.hasAllRemembrance ? this.pet.color : "#555",
+        "box-shadow": this.hasRemembrance || this.hasAllRemembrance ? "0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.7)" : "",
+        "border-color": this.hasRemembrance || this.hasAllRemembrance ? "black" : ""
       };
     }
   },
@@ -34,6 +35,7 @@ export default {
       this.isUnlocked = pet.isUnlocked;
       if (!this.isUnlocked) return;
       this.hasRemembrance = pet.hasRemembrance;
+      this.hasAllRemembrance = ResearchUpgrade.remembranceImprovement.canBeApplied;
     },
     toggleRemembrance() {
       Ra.petWithRemembrance = Ra.petWithRemembrance === this.pet.name ? "" : this.pet.name;
@@ -49,8 +51,11 @@ export default {
     :style="petStyle"
     @click="toggleRemembrance"
   >
-    <span v-if="hasRemembrance">
+    <span v-if="hasRemembrance && !hasAllRemembrance">
       Remembrance given to {{ name }}
+    </span>
+    <span v-else-if="hasAllRemembrance">
+      Remembrance given to all Ra-Celestials
     </span>
     <span v-else>
       Give Remembrance to {{ name }}

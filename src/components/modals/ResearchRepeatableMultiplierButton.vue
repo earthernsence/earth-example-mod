@@ -32,7 +32,7 @@ export default {
       const upgrade = this.upgrade;
 
       this.multiplier.copyFrom(upgrade.effectValue);
-      this.cost.copyFrom(upgrade.effectValue);
+      this.cost.copyFrom(upgrade.cost);
       this.isAffordable = upgrade.isAffordable;
       this.adjective = Planets[this.planet].adjective;
     },

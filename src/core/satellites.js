@@ -1,5 +1,5 @@
-import { DC } from "./constants";
 import { GameMechanicState, SetPurchasableMechanicState } from "./game-mechanics";
+import { DC } from "./constants";
 
 export class Satellites {
   static get amount() {
@@ -101,7 +101,7 @@ class PlanetResearch extends GameMechanicState {
   set progressPoints(value) { this.data.progressPoints = value; }
 
   get goal() {
-    return Math.pow(10, this.level + 2);
+    return Math.pow(5, this.level + 2);
   }
 
   get additionalMultiplier() {

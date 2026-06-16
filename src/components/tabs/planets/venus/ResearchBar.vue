@@ -59,6 +59,8 @@ export default {
         case "mercury":
           return `Boost Dark Matter Dimensions DM multiplier based on game speed and Mercury Research levels.
           Currently ${formatX(this.research.effects.research.effectValue, 2, 2)}`;
+        case "jupiter":
+          return "Avoiding errors";
         default:
           throw "Unknown planet in ResearchBar";
       }

@@ -239,7 +239,7 @@ export const Ra = {
   remembrance: {
     multiplier: 5,
     get nerf() {
-      return Research.upgrades.remembranceImprovement.canBeApplied ? 1 : 0.5
+      return Research.upgrades.remembranceImprovement.canBeApplied ? 1 : 0.5;
     },
     requiredLevels: 20,
     get isUnlocked() {

@@ -24,6 +24,7 @@ export default {
       petWithRemembrance: "",
       isRunning: false,
       memoryBoosts: "",
+      hasAllRemembrance: false,
     };
   },
   computed: {
@@ -66,7 +67,7 @@ export default {
     ],
     petStyle() {
       return {
-        color: (this.petWithRemembrance === "")
+        color: (this.petWithRemembrance === "" || this.hasAllRemembrance)
           ? "white"
           : this.pets.find(pet => pet.pet.name === this.petWithRemembrance).pet.color,
       };
@@ -101,6 +102,7 @@ export default {
       this.petWithRemembrance = Ra.petWithRemembrance;
       this.isRunning = Ra.isRunning;
       this.memoryBoosts = Ra.memoryBoostResources;
+      this.hasAllRemembrance = ResearchUpgrade.remembranceImprovement.canBeApplied;
     },
     startRun() {
       if (this.isDoomed) return;
@@ -174,12 +176,19 @@ export default {
         <h1 :style="petStyle">
           Remembrance
         </h1>
-        <span :style="petStyle">
+        <span
+          v-if="!hasAllRemembrance"
+          :style="petStyle"
+        >
           Whichever Celestial has Remembrance will get {{ formatX(remembranceMult) }} Memory Chunk gain. The other
           Celestials will get {{ formatX(remembranceNerf, 1, 1) }} Memory Chunk gain.
         </span>
+        <span v-else>
+          All Ra-Celestials are affected by Remembrance due to a Venusian Research upgrade and are receiving
+          {{ formatX(remembranceMult) }} Memory Chunk gain.
+        </span>
         <div
-          v-if="hasRemembrance"
+          v-if="hasRemembrance && !hasAllRemembrance"
           class="c-ra-remembrance-unlock-inner"
         >
           <RaPetRemembranceButton
@@ -189,7 +198,7 @@ export default {
           />
         </div>
         <div
-          v-else
+          v-else-if="!hasRemembrance"
           class="c-ra-remembrance-unlock-inner"
         >
           Unlocked by getting {{ formatInt(remembranceReq) }} total Celestial Memory levels
