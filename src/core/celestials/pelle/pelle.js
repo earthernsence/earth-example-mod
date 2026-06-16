@@ -182,8 +182,8 @@ export const Pelle = {
   },
 
   get disabledAchievements() {
-    return [164, 156, 143, 142, 141, 137, 134, 133, 132, 126, 125, 118, 117, 116, 113, 111, 104, 103, 95, 93, 92, 91,
-      87, 85, 78, 76, 74, 65, 55, 54, 37];
+    return [164, 156, 143, 142, 141, 137, 134, 133, 132, 131, 126, 125, 118, 117, 116, 113, 111, 104, 103, 95, 93, 92,
+      91, 87, 85, 78, 76, 74, 65, 55, 54, 37];
   },
 
   get uselessInfinityUpgrades() {
@@ -443,4 +443,5 @@ export const PelleUpgrade = mapGameDataToObject(
 );
 
 PelleUpgrade.rebuyables = PelleUpgrade.all.filter(u => u.isRebuyable);
-PelleUpgrade.singles = PelleUpgrade.all.filter(u => !u.isRebuyable);
+// An upgrade was added post-release; it's simpler to just sort them by cost rather than to migrate the internal data
+PelleUpgrade.singles = PelleUpgrade.all.filter(u => !u.isRebuyable).sort((a, b) => a.cost - b.cost);

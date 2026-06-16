@@ -839,7 +839,8 @@ export const normalAchievements = [
     get description() { return `Get a total Dimensional Sacrifice multiplier of ${formatPostBreak(DC.E9000)}.`; },
     checkRequirement: () => Sacrifice.totalBoost.exponent >= 9000,
     checkEvent: GAME_EVENT.SACRIFICE_RESET_AFTER,
-    reward: "Dimensional Sacrifice doesn't reset your Antimatter Dimensions.",
+    reward: `Dimensional Sacrifice doesn't reset your Antimatter Dimensions
+      and the Autobuyer activates every tick if turned on.`,
   },
   {
     id: 121,
@@ -930,9 +931,14 @@ export const normalAchievements = [
     checkRequirement: () => Currency.infinitiesBanked.gt(DC.D2E9),
     checkEvent: [GAME_EVENT.ETERNITY_RESET_AFTER, GAME_EVENT.SAVE_CONVERTED_FROM_PREVIOUS_VERSION],
     get reward() {
-      return `After Eternity you permanently keep ${formatPercents(0.05)} of your Infinities as Banked Infinities.`;
+      return `You gain ${formatX(2)} times more Infinities and
+      after Eternity you permanently keep ${formatPercents(0.05)} of your Infinities as Banked Infinities.`;
     },
-    effect: () => Currency.infinities.value.times(0.05).floor()
+    effects: {
+      infinitiesGain: 2,
+      bankedInfinitiesGain: () => Currency.infinities.value.times(0.05).floor()
+    }
+
   },
   {
     id: 132,

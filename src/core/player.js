@@ -379,7 +379,7 @@ window.player = {
     previousRuns: {}
   },
   IPMultPurchases: 0,
-  version: 24,
+  version: 25,
   infinityPower: DC.D1,
   postC4Tier: 0,
   eternityPoints: DC.D0,
@@ -892,6 +892,11 @@ window.player = {
       includeAnimated: true,
     },
     notation: "Mixed scientific",
+    notationDigits: {
+      comma: 5,
+      notation: 9
+    },
+    sidebarResourceID: 0,
     retryChallenge: false,
     retryCelestial: false,
     showAllChallenges: false,
@@ -903,7 +908,6 @@ window.player = {
     hotkeys: true,
     themeClassic: "Normal",
     themeModern: "Normal",
-    commas: true,
     updateRate: 33,
     newUI: true,
     offlineProgress: true,
@@ -930,9 +934,9 @@ window.player = {
     highContrastRarity: false,
     swapGlyphColors: false,
     hideAlterationEffects: false,
-    ignoreGlyphEffects: false,
-    ignoreGlyphLevel: false,
-    ignoreGlyphRarity: false,
+    ignoreGlyphEffects: true,
+    ignoreGlyphLevel: true,
+    ignoreGlyphRarity: true,
     glyphBG: GLYPH_BG_SETTING.AUTO,
     glyphBorders: true,
     showHintText: {
@@ -955,7 +959,8 @@ window.player = {
       tachyonParticles: true,
       reality: true,
       background: true,
-      blobSnowflakes: 16
+      blobSnowflakes: 16,
+      blobHole: false
     },
     confirmations: {
       armageddon: true,

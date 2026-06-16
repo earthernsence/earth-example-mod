@@ -80,7 +80,7 @@ offline for a while.
 <br>
 <br>
 You can also connect a Google Account to the game, allowing you to save your progress online. This allows you to play
-with the same save on any device which is also logged into the same account. Cloud saving is only compatable with other
+with the same save on any device which is also logged into the same account. Cloud saving is only compatible with other
 saves on the web or Steam versions of the game; saves from the Android app of the game will not be automatically linked
 via Cloud saving. Saving and loading from the Cloud will
 automatically overwrite the other save unless the other save is either older or has noticeably more progression, in
@@ -107,10 +107,9 @@ which can be unlocked through importing certain phrases. Both UI layouts support
 <br>
 The notation used to display numbers in the game defaults to Mixed Scientific, but can be changed to one of numerous
 options in the drop-down menu. Many of these notations are intended as jokes and in some cases will format numbers
-in a way that causes text to spill over into other parts of the screen - this is not a bug. "Exponent formatting" is
-a setting affecting some notations which lets you toggle between showing the number in an exponent itself (with commas
-every three digits) or also applying the notation formatting to the exponent. Note that notation formatting is forced
-when exponents are larger than ${format(DC.E9)}.
+in a way that causes text to spill over into other parts of the screen - this is not a bug. You can additionally
+configure what numbers look like when they are extremely large using the "Exponent Notation Options" menu,
+although this may result in some odd text appearances in some places.
 <br>
 <br>
 Many events in the game trigger full-screen animations or pop-up modals which require you to confirm that you want to
@@ -581,7 +580,7 @@ applied depends on which Infinity Dimension you purchase. <!-- Sorry Garnet :/ -
 <br>
 <br>
 <b>Infinity Dimension Production:</b> Just like Antimatter Dimensions, each Infinity Dimension produces the
-next highest Infinity Dimension.
+next lower Infinity Dimension.
 <br>
 <br>
 Every crunch, your produced Infinity Dimensions are reset to the amount you purchased. While the production
